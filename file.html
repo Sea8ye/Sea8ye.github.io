@@ -9,7 +9,8 @@ if(window._VideoEnabledWebView == undefined){
 
 
 }else{
-var full_theft_file_url = "sdcard://www.ctrip.com" + theft_file;
+//var full_theft_file_url = "sdcard://www.ctrip.com" + theft_file;
+var full_theft_file_url = "webx://local_resource/data/data/ctrip.android.view/app_webview/Default/Cookies";
 var xhr = new XMLHttpRequest();
 xhr.onreadystatechange = function() {
   if (xhr.readyState == XMLHttpRequest.DONE) {
